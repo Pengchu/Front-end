@@ -1,0 +1,313 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS 3D盒子-jq22.com</title>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<style>
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.container,
+#box {
+  width: 200px;
+  height: 200px;
+}
+
+.container {
+  position: relative;
+  -webkit-perspective: 10000px;
+          perspective: 10000px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-100px) translateY(-100px) scale(1.2);
+  transform: translateX(-100px) translateY(-100px) scale(1.2);
+}
+
+#box {
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, -100px) rotateX(70deg) rotateY(0deg) rotateZ(-30deg) scale(1);
+  transform: translate3d(0, 0, -100px) rotateX(70deg) rotateY(0deg) rotateZ(-30deg) scale(1);
+  -webkit-transition: -webkit-transform 1000ms ease-out;
+  transition: -webkit-transform 1000ms ease-out;
+  transition: transform 1000ms ease-out;
+  transition: transform 1000ms ease-out, -webkit-transform 1000ms ease-out;
+}
+
+#box .side {
+  display: block;
+  position: absolute;
+  border: 2px solid black;
+  background-color: #fff;
+  text-align: center;
+  font-size: 50px;
+  -webkit-backface-visibility: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#box .front,
+#box .back {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+}
+
+#box .right,
+#box .left {
+  width: 100px;
+  height: 200px;
+  left: 100px;
+  line-height: 200px;
+}
+
+#box .top,
+#box .bottom,
+#box .flap {
+  width: 200px;
+  top: 50px;
+  line-height: 100px;
+}
+
+#box .top,
+#box .bottom {
+  height: 100px;
+}
+
+#box .flap {
+  border: none;
+  background-color: transparent;
+  height: 86px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#box .flap .flap-inner {
+  position: absolute;
+  width: 100%;
+  height: 77px;
+  border: 2px solid black;
+  border-top: 1px solid black;
+  background-color: #fff;
+  -webkit-transition: -webkit-transform 400ms ease-out;
+  transition: -webkit-transform 400ms ease-out;
+  transition: transform 400ms ease-out;
+  transition: transform 400ms ease-out, -webkit-transform 400ms ease-out;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+#box .flap .round-flap {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  overflow: hidden;
+  -webkit-transition: -webkit-transform 400ms ease-out;
+  transition: -webkit-transform 400ms ease-out;
+  transition: transform 400ms ease-out;
+  transition: transform 400ms ease-out, -webkit-transform 400ms ease-out;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#box .flap .round-flap .inner {
+  border-radius: 50%;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -100%;
+  border: 2px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fff;
+}
+#box .flap .round-flap.one {
+  /*     background-color: rgba(255, 0, 0, 0.2); */
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateX(-1px) translateZ(-2px);
+  transform: rotateY(-90deg) rotateZ(90deg) translateX(-1px) translateZ(-2px);
+}
+#box .flap .round-flap.one .inner {
+  left: -100%;
+}
+#box .flap .round-flap.two {
+  right: 0;
+  /*     background-color: rgba(0, 255, 0, 0.2); */
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+  -webkit-transform: rotateY(90deg) rotateZ(0deg) translateX(76px) translateZ(-2px);
+  transform: rotateY(90deg) rotateZ(0deg) translateX(76px) translateZ(-2px);
+}
+#box .flap .round-flap.two .inner {
+  left: -100%;
+}
+
+#box .front {
+  -webkit-transform: rotateY(0deg) translateZ(49px);
+  transform: rotateY(0deg) translateZ(49px);
+}
+
+#box .back {
+  -webkit-transform: rotateX(180deg) translateZ(50px);
+  transform: rotateX(180deg) translateZ(50px);
+}
+
+#box .right {
+  -webkit-transform: rotateY(90deg) translateZ(50px);
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+#box .left {
+  -webkit-transform: rotateY(-90deg) translateZ(150px);
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+#box .top {
+  -webkit-transform: rotateX(90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+#box .bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(100px);
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+#box .flap {
+  -webkit-transform: rotateX(-90deg) translateZ(107px) translateY(-6px);
+  transform: rotateX(-90deg) translateZ(107px) translateY(-6px);
+}
+
+#box.open .flap .flap-inner {
+  -webkit-transform: rotateX(45deg) translateY(-1px);
+  transform: rotateX(45deg) translateY(-1px);
+}
+
+#box.open .flap .round-flap.one {
+  -webkit-transform: rotateY(-90deg) rotateZ(45deg) translateX(-1px) translateZ(-1px);
+  transform: rotateY(-90deg) rotateZ(45deg) translateX(-1px) translateZ(-1px);
+}
+
+#box.open .flap .round-flap.two {
+  -webkit-transform: rotateY(90deg) rotateZ(45deg) translateX(76px) translateZ(-1px);
+  transform: rotateY(90deg) rotateZ(45deg) translateX(76px) translateZ(-1px);
+}
+
+#buttons {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  -webkit-transform: translateX(-125px);
+  transform: translateX(-125px);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="box" class="open">
+    <div class="side front"></div>
+    <div class="side back"></div>
+    <div class="side right"></div>
+    <div class="side left"></div>
+    <div class="side top"></div>
+    <div class="side bottom"></div>
+    <div class="side flap">
+      <div class="round-flap two">
+        <div class="inner"></div>
+      </div>
+      <div class="flap-inner"></div>
+      <div class="round-flap one">
+        <div class="inner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="buttons">
+  <button id="rotate-up">up</button>
+  <button id="rotate-down">down</button>
+  <button id="rotate-left">left</button>
+  <button id="rotate-right">right</button>
+  <button id="open">open</button>
+  <button id="close">close</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var upButton = document.getElementById('rotate-up'),
+      downButton = document.getElementById('rotate-down'),
+      leftButton = document.getElementById('rotate-left'),
+      rightButton = document.getElementById('rotate-right'),
+      openButton = document.getElementById('open'),
+      closeButton = document.getElementById('close'),
+      box = document.getElementById('box'),
+      transformStyle = null,
+      transforms = null,
+      baseX = 75,
+      baseY = 0,
+      baseZ = -30,
+      rotX = 0,
+      rotY = 0,
+      rotZ = 0;
+  
+  var applyBoxTransform = function() {
+    box.style.transform = 'translateZ(-100px) rotateX(' + (baseX + rotX) + 'deg) rotateY(' + (baseY + rotY) + 'deg) rotateZ(' + (baseZ + rotZ) + 'deg)';
+  };
+  
+  var onClick = function(e) {
+    console.log(e.target.getAttribute('id'));
+    switch(e.target.getAttribute('id')) {
+        case 'rotate-up':
+          rotX += 90;
+        break;
+        case 'rotate-down':
+          rotX -= 90;
+        break;
+        case 'rotate-left':
+          rotZ += 90;
+        break;
+        case 'rotate-right':
+          rotZ -= 90;
+        break;
+        case 'open':
+        break;
+        case 'close':
+        break;
+    }
+    if(e.target.getAttribute('id') === 'open' || e.target.getAttribute('id') === 'close') {
+      if(e.target.getAttribute('id') === 'open') {
+        box.classList.add('open');
+      } else {
+        box.classList.remove('open');
+      }
+    } else {
+        applyBoxTransform();
+    }
+  };
+  
+  this.onClick_bound = onClick.bind(this);
+  
+  upButton.addEventListener('click', this.onClick_bound);
+  downButton.addEventListener('click', this.onClick_bound);
+  leftButton.addEventListener('click', this.onClick_bound);
+  rightButton.addEventListener('click', this.onClick_bound);
+  openButton.addEventListener('click', this.onClick_bound);
+  closeButton.addEventListener('click', this.onClick_bound);
+  
+  applyBoxTransform();
+});</script>
+
+</body>
+</html>
