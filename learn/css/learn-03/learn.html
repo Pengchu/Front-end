@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learn css 动画效果</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            background: linear-gradient(to bottom right, #a4c5c7, #2D3F48);
+        }
+
+        .cube {
+            width: 10vmin;
+            height: 10vmin;
+            transform-style: preserve-3d;
+            transform-origin: center center -.5vmin;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .cube > .cube-wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            backface-visibility: visible;
+            transform-origin: center center -.5vmin;
+            will-change: transform;
+        }
+
+        .cube[data-cube^='1'] {
+            top: calc(-10vmin - 2px);
+            --color-bg-top: #A0EBE8;
+            --color-bg-bottom: #89E4E4;
+            --color-fl-top: #43A5B2;
+            --color-fl-bottom: #3D93A9;
+        }
+        [class^='cube-'] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: visible;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="cubes">
+
+            <div class="cube" data-cube="111">
+                <div class="cube-wrap">
+                    <div class="cube-top"></div>
+                    <div class="cube-bottom"></div>
+                    <div class="cube-front-left"></div>
+                    <div class="cube-front-right"></div>
+                    <div class="cube-back-left"></div>
+                    <div class="cube-back-right"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
